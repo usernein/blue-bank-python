@@ -18,3 +18,8 @@ Blue Bank é um banco fictício desenvolvidos pelos alunos da Blue EdTech. Este 
   - Não permite uso de senhas menores que 6 caracteres
   - Não permite registro de usuários menores que 16 anos (e informa quanto tempo o usuário precisa esperar para tentar novamente)
 - Não tem burocracia :)
+
+## Como executar?
+Clone este repositório com `git clone https://github.com/usernein/blue-bank-python`, entre na pasta e execute: `python3 main.py`.
+
+Este programa requer que a versão do Python seja 3.6 ou superior.
