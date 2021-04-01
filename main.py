@@ -1,6 +1,6 @@
 from database import users, passwords
 from modules.users import register, edit
-from modules.operations import saque, consulta, deposito
+from modules.operations import saque, consulta, deposito, transferencia
 
 def login(username):
     if username in users:
@@ -57,8 +57,9 @@ usuário: {username}""")
     while True:
         option = int(input("""\nO que deseja fazer?
 1. Saque
-2. Depósito
+2. Transferência
 3. Consulta
+4. Depósito
 0. Sair\n>>> """))
 
         print("")
@@ -69,13 +70,17 @@ usuário: {username}""")
             saque(info, valor)
             print("Saque autorizado!")
         elif option == 2:
-            valor = int(input("Digite o valor a depositar:\n>>> "))
+            valor = int(input("Digite o valor a transferir:\n>>> "))
             who = input("Digite o username do recebedor:\n>>> ")
             while who not in users:
                 who = input("Usuário inexistente! Digite o username do recebedor:\n>>> ")
-            deposito(info, valor, users[who])
-            print("Depósito concluído!")
+            transferencia(info, valor, users[who])
+            print("Transferência concluída!")
         elif option == 3:
             consulta(username)
+        elif option == 4:
+            valor = int(input("Digite o valor a depositar:\n>>> "))
+            deposito(info, valor)
+            print("Depósito concluído!")
 
 main()
