@@ -1,4 +1,6 @@
 # blue-bank-python
+![bb](https://user-images.githubusercontent.com/29507335/113351651-8c269d00-9311-11eb-9529-073df170a292.jpeg)
+
 Blue Bank é um banco fictício desenvolvidos pelos alunos da Blue EdTech. Este programa é a minha versão da interface do usuário, feita com Python, suor e lágrimas.
 
 ## Pontos feitos:
