@@ -42,6 +42,28 @@ def login(username):
     print("Usuário criado!")
     return True
 
+def handleOperation(option, username, info):
+    print("")
+    if option == 0:
+        return False
+    elif option == 1:
+        valor = int(input("Digite o valor desejado:\n>>> "))
+        saque(info, valor)
+        print("Saque autorizado!")
+    elif option == 2:
+        valor = int(input("Digite o valor a transferir:\n>>> "))
+        who = input("Digite o username do recebedor:\n>>> ")
+        while who not in users:
+            who = input("Usuário inexistente! Digite o username do recebedor:\n>>> ")
+        transferencia(info, valor, users[who])
+        print("Transferência concluída!")
+    elif option == 3:
+        consulta(username)
+    elif option == 4:
+        valor = int(input("Digite o valor a depositar:\n>>> "))
+        deposito(info, valor)
+        print("Depósito concluído!")
+
 def main():
     username = input("Digite um nome de usuário:\n>>> ")
     succeeded = login(username)
@@ -62,25 +84,10 @@ usuário: {username}""")
 4. Depósito
 0. Sair\n>>> """))
 
-        print("")
-        if option == 0:
-            break
-        elif option == 1:
-            valor = int(input("Digite o valor desejado:\n>>> "))
-            saque(info, valor)
-            print("Saque autorizado!")
-        elif option == 2:
-            valor = int(input("Digite o valor a transferir:\n>>> "))
-            who = input("Digite o username do recebedor:\n>>> ")
-            while who not in users:
-                who = input("Usuário inexistente! Digite o username do recebedor:\n>>> ")
-            transferencia(info, valor, users[who])
-            print("Transferência concluída!")
-        elif option == 3:
-            consulta(username)
-        elif option == 4:
-            valor = int(input("Digite o valor a depositar:\n>>> "))
-            deposito(info, valor)
-            print("Depósito concluído!")
+        try:
+            if not handleOperation(option, username, info):
+                break
+        except Exception as e:
+            print(f"    !!! Operação falhou: {e} !!!")
 
 main()
